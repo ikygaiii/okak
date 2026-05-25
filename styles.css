@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #8a8a8a;
+    --line: #ececec;
+}
+
+html,
+body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Unbounded", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 32px 24px 48px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.counter {
+    font-family: "Martian Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.counter__current {
+    color: var(--fg);
+}
+
+.counter__separator {
+    opacity: 0.6;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    max-width: 560px;
+}
+
+.content--hidden {
+    display: none;
+}
+
+.title {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 500;
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-family: "Martian Mono", monospace;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--fg);
+    max-width: 480px;
+}
+
+.cta {
+    appearance: none;
+    border: 1px solid var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+    font-family: "Martian Mono", monospace;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    padding: 18px 28px;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease;
+}
+
+.cta:hover {
+    background: transparent;
+    color: var(--fg);
+}
+
+.cta:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.footnote {
+    font-family: "Martian Mono", monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.success-label {
+    font-family: "Martian Mono", monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+}
+
+.success-number {
+    font-family: "Martian Mono", monospace;
+    font-weight: 500;
+    font-size: clamp(56px, 12vw, 120px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+}
+
+.success-text {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 2.5vw, 22px);
+    line-height: 1.3;
+    max-width: 420px;
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 24px 20px 32px;
+    }
+
+    .content {
+        gap: 24px;
+    }
+}
