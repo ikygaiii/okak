@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10 ₽</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="page">
+        <header class="counter" aria-live="polite">
+            <span class="counter__current" id="counter-current">0</span>
+            <span class="counter__separator">/</span>
+            <span class="counter__total">100 000</span>
+        </header>
+
+        <section class="content" id="initial-view">
+            <h1 class="title">Я не обещаю ничего.</h1>
+            <p class="subtitle">
+                100 000 человек отдают по 10 ₽.
+                <br />
+                Взамен — ничего, кроме номера в списке.
+            </p>
+            <button class="cta" id="join-button" type="button">
+                Стать частью этого — 10 ₽
+            </button>
+            <p class="footnote">Это социальный эксперимент. Не благотворительность. Не инвестиция.</p>
+        </section>
+
+        <section class="content content--hidden" id="success-view" aria-hidden="true">
+            <p class="success-label">Ваш номер</p>
+            <p class="success-number" id="user-number">—</p>
+            <p class="success-text">Сохраните номер. Это всё, что у вас есть.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
