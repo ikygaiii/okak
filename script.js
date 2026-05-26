@@ -1,26 +1,9 @@
 (() => {
-    const TOTAL = 100000;
-
     const counterEl = document.getElementById("counter-current");
     const initialView = document.getElementById("initial-view");
     const successView = document.getElementById("success-view");
     const userNumberEl = document.getElementById("user-number");
     const joinButton = document.getElementById("join-button");
-
-    // --- Backend stubs ----------------------------------------------------
-    // Заглушки. Позже заменим на реальные вызовы к API + платёжный шлюз.
-
-    async function fetchParticipantCount() {
-        // TODO: GET /api/count → { count: number }
-        return 0;
-    }
-
-    async function joinExperiment() {
-        // TODO: POST /api/join → редирект на оплату → webhook → { number: int }
-        return { number: Math.max(1, Math.floor(Math.random() * 100000)) };
-    }
-
-    // --- View helpers -----------------------------------------------------
 
     function formatNumber(value) {
         return String(value).padStart(6, "0");
@@ -37,11 +20,25 @@
         userNumberEl.textContent = `№ ${formatNumber(number)}`;
     }
 
-    // --- Init -------------------------------------------------------------
+    async function fetchCount() {
+        const res = await fetch("/api/count");
+        const { count } = await res.json();
+        return count;
+    }
+
+    async function joinExperiment() {
+        const res = await fetch("/api/join", { method: "POST" });
+        if (!res.ok) throw new Error(`server error ${res.status}`);
+        return res.json(); // { number }
+    }
 
     async function init() {
-        const count = await fetchParticipantCount();
-        renderCounter(count);
+        try {
+            const count = await fetchCount();
+            renderCounter(count);
+        } catch {
+            // счётчик не критичен
+        }
     }
 
     joinButton.addEventListener("click", async () => {
